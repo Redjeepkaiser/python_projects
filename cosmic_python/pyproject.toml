@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "allocation"
+name = "test"
 description = "Allocation package"
 version = "0.0.1"
 readme = "README.md"
@@ -15,7 +15,12 @@ package_dir="src"
 [options.packages.find]
 where="src"
 
+[tool.setuptools]
+packages = ["allocation", "api", "config"]
+
 [tool.pytest.ini_options]
 addopts = [
     "--import-mode=importlib",
 ]
+
+
