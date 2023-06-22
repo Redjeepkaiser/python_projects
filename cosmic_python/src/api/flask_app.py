@@ -2,7 +2,11 @@ from flask import Flask, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from allocation import model, orm, repository
+from allocation import (
+    model,
+    orm,
+    repository,
+)
 import config
 
 orm.start_mappers()
@@ -15,7 +19,9 @@ def allocate_endpoint():
     session = get_session()
     batches = repository.SqlAlchemyRepository(session).list()
     line = model.OrderLine(
-        request.json["orderid"], request.json["sku"], request.json["qty"],
+        request.json["orderid"],
+        request.json["sku"],
+        request.json["qty"],
     )
 
     batchref = model.allocate(line, batches)

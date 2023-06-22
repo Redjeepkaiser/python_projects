@@ -3,24 +3,40 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "test"
-description = "Allocation package"
+name = "cosmic-python"
+description = "Code along with the cosmic python book."
 version = "0.0.1"
 readme = "README.md"
 requires-python = ">=3.7"
 
-[options]
-package_dir="src"
-
-[options.packages.find]
-where="src"
-
-[tool.setuptools]
-packages = ["allocation", "api", "config"]
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
 
 [tool.pytest.ini_options]
 addopts = [
     "--import-mode=importlib",
 ]
 
+[tool.black]
+line-length = 80
+include = '''
+(
+    ^/tests/
+  | ^/src/
+  | ^/conftest[.]py
+)
+'''
+exclude = '''
+(
+    __pycache__
+  | \.pytest_cache
+  | .*\.egg-info
+)
+'''
 
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+show_column_numbers = true
+namespace_packages = true

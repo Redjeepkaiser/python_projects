@@ -3,7 +3,6 @@ import allocation.model as model
 
 
 class AbstractRepository(abc.ABC):
-
     @abc.abstractmethod
     def add(self, batch: model.Batch):
         raise NotImplementedError
@@ -14,7 +13,6 @@ class AbstractRepository(abc.ABC):
 
 
 class SqlAlchemyRepository(AbstractRepository):
-
     def __init__(self, session):
         self.session = session
 
@@ -29,7 +27,6 @@ class SqlAlchemyRepository(AbstractRepository):
 
 
 class FakeRepository(AbstractRepository):
-
     def __init__(self, batches):
         self._batches = set(batches)
 

@@ -1,4 +1,5 @@
 import pytest
+
 # import requests
 
 # @pytest.mark.usefixtures("restart_api")
@@ -7,7 +8,7 @@ import pytest
 #     early_batch = random_batchref(1)
 #     later_batch = random_batchref(2)
 #     other_batch = random_batchref(3)
-    
+
 #     add_stock(
 #         (later_batch, sku, 100, "2011-01-02"),
 #         (later_batch, sku, 100, "2011-01-01"),

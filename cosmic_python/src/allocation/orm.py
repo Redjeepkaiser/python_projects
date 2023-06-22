@@ -1,5 +1,16 @@
-from sqlalchemy import Integer, MetaData, Table, String, Column, ForeignKey, Date
-from sqlalchemy.orm import relationship, registry
+from sqlalchemy import (
+    Integer,
+    MetaData,
+    Table,
+    String,
+    Column,
+    ForeignKey,
+    Date,
+)
+from sqlalchemy.orm import (
+    relationship,
+    registry,
+)
 
 import allocation.model as model
 
@@ -35,13 +46,17 @@ allocations = Table(
 
 
 def start_mappers():
-    lines_mapper = mapper_registry.map_imperatively(model.OrderLine, order_lines)
+    lines_mapper = mapper_registry.map_imperatively(
+        model.OrderLine, order_lines
+    )
     mapper_registry.map_imperatively(
         model.Batch,
         batches,
         properties={
             "_allocations": relationship(
-                lines_mapper, secondary=allocations, collection_class=set,
+                lines_mapper,
+                secondary=allocations,
+                collection_class=set,
             )
         },
     )
