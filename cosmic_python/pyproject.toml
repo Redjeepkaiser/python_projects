@@ -35,6 +35,11 @@ exclude = '''
 )
 '''
 
+[tool.isort]
+line_length=80
+multi_line_output=3
+skip = ["dev-venv", "venv"]
+
 [tool.mypy]
 python_version = "3.9"
 ignore_missing_imports = true

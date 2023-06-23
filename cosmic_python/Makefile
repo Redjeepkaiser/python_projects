@@ -7,6 +7,9 @@ all: install down build up test
 install:
 	@pip3 install -e .
 
+setup:
+
+
 
 run:
 	@gunicorn -w 1 -b 127.0.0.1:5005 api:app
@@ -39,4 +42,5 @@ test-e2e: build
 
 
 fmt:
+	@isort .
 	@black .

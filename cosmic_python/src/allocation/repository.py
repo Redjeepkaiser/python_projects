@@ -1,4 +1,5 @@
 import abc
+
 import allocation.model as model
 
 

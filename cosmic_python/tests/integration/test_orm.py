@@ -1,4 +1,5 @@
 from sqlalchemy import text
+
 import allocation.model as model
 
 

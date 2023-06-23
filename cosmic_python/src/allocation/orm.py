@@ -1,16 +1,13 @@
 from sqlalchemy import (
+    Column,
+    Date,
+    ForeignKey,
     Integer,
     MetaData,
-    Table,
     String,
-    Column,
-    ForeignKey,
-    Date,
+    Table,
 )
-from sqlalchemy.orm import (
-    relationship,
-    registry,
-)
+from sqlalchemy.orm import registry, relationship
 
 import allocation.model as model
 
