@@ -1,6 +1,6 @@
 from datetime import date
 
-from allocation.model import Batch, OrderLine
+from allocation.domain.model import Batch, OrderLine
 
 
 def make_batch_and_order_line(

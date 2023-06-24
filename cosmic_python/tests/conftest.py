@@ -7,7 +7,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import clear_mappers, sessionmaker
 
 import config
-from allocation.orm import metadata, start_mappers
+from allocation.adapters.orm import metadata, start_mappers
 
 
 @pytest.fixture
@@ -19,18 +19,14 @@ def in_memory_db():
 
 @pytest.fixture
 def session(in_memory_db):
-    print("I AM CALLED")
     start_mappers()
     yield sessionmaker(bind=in_memory_db)()
     clear_mappers()
-    print("I AM CLEANED UP")
 
 
 def wait_for_webapp_to_come_up():
     deadline = time.time() + 10
     url = config.get_api_url()
-
-    print(url)
 
     while time.time() < deadline:
         try:

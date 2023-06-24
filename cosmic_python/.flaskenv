@@ -1,4 +1,4 @@
-FLASK_APP=src/api
+FLASK_APP=src/allocation/api
 FLASK_RUN_HOST=0.0.0.0
 FLASK_RUN_PORT=80
 FLASK_DEBUG=1

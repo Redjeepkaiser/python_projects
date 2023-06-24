@@ -18,13 +18,16 @@ build:
 	@docker-compose build
 
 up:
+	@docker-compose up
+
+daemon-up:
 	@docker-compose up -d app
 
 
 lint:
 	@mypy .
 
-test: up
+test: daemon-up
 	@docker-compose run --rm --no-deps --entrypoint="pytest" app /tests/unit /tests/integration /tests/e2e
 
 test-unit:
@@ -33,7 +36,7 @@ test-unit:
 test-integration:
 	@docker-compose run --rm --no-deps --entrypoint="pytest -v" app /tests/integration
 
-test-e2e: up
+test-e2e: daemon-up
 	@docker-compose run --rm --no-deps --entrypoint="pytest -v" app /tests/e2e
 
 

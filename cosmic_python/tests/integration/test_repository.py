@@ -1,7 +1,7 @@
 from sqlalchemy import text
 
-import allocation.model as model
-import allocation.repository as repository
+import allocation.domain.model as model
+import allocation.adapters.repository as repository
 
 
 def test_repository_can_save_a_batch(

@@ -14,4 +14,3 @@ COPY README.md README.md
 RUN pip install -e .
 
 CMD ["flask", "run"]
-# CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:80", "api:app"]
