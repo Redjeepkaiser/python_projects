@@ -1,0 +1,10 @@
+{
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+}

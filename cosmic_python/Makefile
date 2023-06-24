@@ -7,13 +7,9 @@ all: install down build up test
 install:
 	@pip3 install -e .
 
-setup:
-
-
 
 run:
-	@gunicorn -w 1 -b 127.0.0.1:5005 api:app
-
+	@gunicorn -w 1 -b 0.0.0.0:8080 api:app
 
 down:
 	@docker-compose down --remove-orphans
@@ -28,16 +24,16 @@ up:
 lint:
 	@mypy .
 
-test: build
+test: up
 	@docker-compose run --rm --no-deps --entrypoint="pytest" app /tests/unit /tests/integration /tests/e2e
 
-test-unit: build
+test-unit:
 	@docker-compose run --rm --no-deps --entrypoint="pytest -v" app /tests/unit
 
-test-integration: build
+test-integration:
 	@docker-compose run --rm --no-deps --entrypoint="pytest -v" app /tests/integration
 
-test-e2e: build
+test-e2e: up
 	@docker-compose run --rm --no-deps --entrypoint="pytest -v" app /tests/e2e
 
 

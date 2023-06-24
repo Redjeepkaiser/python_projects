@@ -1,6 +1,6 @@
 FROM python:3.9-bookworm
 
-WORKDIR /app
+WORKDIR /
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
@@ -13,4 +13,5 @@ COPY README.md README.md
 
 RUN pip install -e .
 
-CMD ["gunicorn", "-w", "1", "-b", "127.0.0.1:5005", "api:app"]
+CMD ["flask", "run"]
+# CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:80", "api:app"]

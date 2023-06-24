@@ -12,6 +12,11 @@ get_session = sessionmaker(bind=create_engine(config.get_postgres_uri()))
 app = Flask(__name__)
 
 
+@app.route("/", methods=["GET"])
+def test() -> Tuple[Dict, int]:
+    return {}, 200
+
+
 @app.route("/allocate", methods=["POST"])
 def allocate_endpoint() -> Tuple[Dict, int]:
     session = get_session()

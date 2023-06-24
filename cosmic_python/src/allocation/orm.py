@@ -43,6 +43,7 @@ allocations = Table(
 
 
 def start_mappers():
+    # print("START MAPPER CALLED")
     lines_mapper = mapper_registry.map_imperatively(
         model.OrderLine, order_lines
     )

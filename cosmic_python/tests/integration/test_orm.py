@@ -3,9 +3,7 @@ from sqlalchemy import text
 import allocation.model as model
 
 
-def test_orderline_mapper_can_load_lines(
-    session,
-):
+def test_orderline_mapper_can_load_lines(session) -> None:
     session.execute(
         text(
             "INSERT INTO order_lines (order_id, sku, quantity) VALUES "
@@ -24,9 +22,7 @@ def test_orderline_mapper_can_load_lines(
     assert session.query(model.OrderLine).all() == expected
 
 
-def test_orderline_mapper_can_save_lines(
-    session,
-):
+def test_orderline_mapper_can_save_lines(session) -> None:
     new_line = model.OrderLine(
         "order1",
         "DECORATIVE-WIDGET",
@@ -40,4 +36,5 @@ def test_orderline_mapper_can_save_lines(
             text('SELECT order_id, sku, quantity FROM "order_lines"')
         )
     )
+
     assert rows == [("order1", "DECORATIVE-WIDGET", 12)]
